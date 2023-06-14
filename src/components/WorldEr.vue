@@ -1,36 +1,16 @@
 <template>
-	<div class="slider">
-    <transition-group name="fade" tag="div" class="slider__container" :css="false">
-      <div v-for="(image, index) in images" :key="index" class="slider__item" :style="{ backgroundImage: 'url(' + image + ')' }"></div>
-    </transition-group>
-  </div>
-  <div class="head">
-			<div class="headin">
-				<div class="headl">
-					<!-- 这里写的是 最上面那条灰色的部分 向左浮动 -->
-					<img src="./img/loading.gif" alt="" height="60px" style="margin-top: 5px;float: left;">Outstanding website
-				</div>
-				<!-- <div class="inp"><button style="top: 0;width: 60px;background-color: white;color: blue;">百度</button><input style="position: absolute;height: 36px;left: 60px;width: 260px;opacity: 0.5;" type="text" name="" id=""><button style="right: 0;background-color: blue;color: rgb(255, 255, 255);width: 80px;">搜索</button></div> -->
-				<div class="headr">
-					<p><router-link to="/worlder" active-class="active" ><img src="./img/1.png" alt="">主页</router-link></p>
-					<p><router-link to="/home" active-class="active" ><img src="./img/2.png" alt="">导航</router-link></p>
-					<p><router-link to="/log" active-class="active" ><img src="./img/3.png" alt="">登陆</router-link></p>
-					<p><router-link to="/" active-class="active" ><img src="./img/4.png" alt="">注册</router-link></p>
-					<!-- <p><a href=""><img src="./img/1.png" alt="">主页</a></p>
-					<p><a href=""><img src="./img/2.png" alt="">导航</a></p>
-					<p><a href=""><img src="./img/3.png" alt="">登陆</a></p>
-					<p><a href=""><img src="./img/4.png" alt="">注册</a></p> -->
-				</div>
-				
-			</div>
-
-	</div>
-	<router-view></router-view>
-
-		
+			
+			<p class="p1">
+			世界很暗，但是你来了
+		</p>
+		<div class="descripution center-align">
+			<span id="subtitle"></span>
+			<span class="typed-cursor" aria-hidden="true">|</span>
+			<!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script> -->
+		</div>
+		<p class="p2"><a href="./index1.html">开始阅读</a></p>
 </template>
-
-<style scoped>
+<style>
 * {
 	margin: 0;
 	padding: 0;
@@ -71,16 +51,13 @@ a {
 	font-size: 28px;
 }
 
-
 .headr {
 	width: 300px;
 	display: flex;
 	justify-content: space-between;
 	font-family: youyuan;
 }
-.headl img {
-  height: 60px;
-}
+
 .headr img {
 	width: 20px;
 	height: 20px;

@@ -1,7 +1,7 @@
 <template>
     
     <!-- <Loginone /> -->
-    <DemoOne  /> 
+    <!-- <DemoOne  />  -->
     <!-- <div>
       <div v-if="showFirstPage">
         <DemoOne />
@@ -11,13 +11,13 @@
       </div>
     </div> -->
     <HelloWorld  />
-    <login-dl />
+    <!-- <login-dl /> -->
 </template>
 
 <script setup>
 // {/* <script> */}
 import HelloWorld from './components/HelloWorld.vue'
-import DemoOne from './components/DemoOne.vue'
+//import DemoOne from './components/DemoOne.vue'
 // import login-dl from './components/login-dl.vue'
 // export default{
 //   data(){
