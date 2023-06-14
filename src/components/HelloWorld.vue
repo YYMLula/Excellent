@@ -15,7 +15,8 @@
 					<p><router-link to="/worlder" active-class="active" ><img src="./img/1.png" alt="">主页</router-link></p>
 					<p><router-link to="/home" active-class="active" ><img src="./img/2.png" alt="">导航</router-link></p>
 					<p><router-link to="/log" active-class="active" ><img src="./img/3.png" alt="">登陆</router-link></p>
-					<p><router-link to="/" active-class="active" ><img src="./img/4.png" alt="">注册</router-link></p>
+					<p><router-link to="/time" active-class="active" ><img src="./img/4.png" alt="">注册</router-link></p>
+					<p><router-link to="/sc" active-class="active" ><img src="./img/4.png" alt="">搜索</router-link></p>
 					<!-- <p><a href=""><img src="./img/1.png" alt="">主页</a></p>
 					<p><a href=""><img src="./img/2.png" alt="">导航</a></p>
 					<p><a href=""><img src="./img/3.png" alt="">登陆</a></p>

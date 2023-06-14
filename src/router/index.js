@@ -29,7 +29,22 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import('../components/login-dl.vue')
   },
-  
+  {
+    path: '/time',
+    name: 'time',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../components/TimeTs.vue')
+  },
+  {
+    path: '/sc',
+    name: 'sc',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../components/SearchComponent.vue')
+  },
   {
     path: '/home',
     name: 'home',

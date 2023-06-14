@@ -17,11 +17,17 @@
         <h1>注册</h1>
     </div>
     <!-- 输入框盒子 -->
-    <div class="input-box">
-        <input type="text" placeholder="用户名">
-        <input type="password" placeholder="密码">
-        <input type="password" placeholder="确认密码">
-    </div>
+    <el-form ref="RegisterFormRef" :model="RegisterForm" :rules="rules" label-width="5px">
+                <el-form-item prop="username" label=" ">
+                    <el-input type="text" placeholder="用户名" :suffix-icon="User" v-model="RegisterForm.username"/>
+                </el-form-item>  
+                <el-form-item prop="password" label=" ">
+                    <el-input type="password" placeholder="密码" :suffix-icon="Lock" v-model="RegisterForm.password"/>
+                </el-form-item>  
+                <el-form-item prop="confirmPassword" label=" ">
+                    <el-input type="password" placeholder="确认密码" :suffix-icon="Lock" v-model="RegisterForm.confirmPassword"/>
+                </el-form-item>  
+            </el-form>
     <!-- 按钮盒子 -->
     <div class="btn-box">
         <button>注册</button>
@@ -36,10 +42,14 @@
         <h1>登录</h1>
     </div>
     <!-- 输入框盒子 -->
-    <div class="input-box">
-        <input type="text" placeholder="用户名">
-        <input type="password" placeholder="密码">
-    </div>
+    <el-form ref="loginFormRef" :model="loginForm" :rules="rules" label-width="5px">
+                <el-form-item prop="username" label=" ">
+                    <el-input type="text" placeholder="用户名" :suffix-icon="User" v-model="loginForm.username"/>
+                </el-form-item>  
+                <el-form-item prop="password" label=" ">
+                    <el-input type="password" placeholder="密码" :suffix-icon="Lock" v-model="loginForm.password"/>
+                </el-form-item>    
+            </el-form>
     <!-- 按钮盒子 -->
     <div class="btn-box">
         <button>登录</button>
@@ -52,21 +62,48 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-const preRef=ref('')
-const imgList=ref([require('@/assets/wuwu.jpeg'),require('@/assets/waoku.jpg')])
-let flag=ref(true)
-const mySwitch=()=>{
-if(flag.value)
-{
-    preRef.value.style.background='#c9e0ed'
-    preRef.value.style.transform='translateX(100%)'
-}else{
-    preRef.value.style.background='#edd4dc'
-    preRef.value.style.transform='translateX(0%)'
-}
-flag.value=!flag.value
-}
+    import {reactive,ref} from 'vue'
+    import{Lock,User} from '@element-plus/icons-vue'
+    const preRef=ref('')
+    const imgList=ref([require('@/assets/wuwu.jpeg'),require('@/assets/waoku.jpg')])
+    let flag=ref(true)
+    const mySwitch=()=>{
+            if(flag.value)
+            {
+                preRef.value.style.background='#c9e0ed'
+                preRef.value.style.transform='translateX(100%)'
+            }else{
+                preRef.value.style.background='#edd4dc'
+                preRef.value.style.transform='translateX(0%)'
+                // img.src=require("@/assets/img/waoku.jpg")
+            }
+            flag.value=!flag.value
+    }
+    const loginForm=reactive({
+        username:'',
+        password:''
+    })
+    const RegisterForm=reactive({
+        username:'',
+        password:'',
+        confirmPassword:''
+    })
+    const loginFormRef=ref('')
+    const RegisterFormRef=ref('')
+    const rules=reactive({
+        username: [
+        { required: true, message: '请输入用户名', trigger: 'blur' },
+        { min: 3, max: 5, message: '长度在3-5个字符之间', trigger: 'blur' },
+        ],
+        password: [
+        { required: true, message: '请输入密码', trigger: 'blur' },
+        { min: 6, max: 12, message: '长度在6-12个字符之间', trigger: 'blur' },
+        ],
+        confirmPassword: [
+        { required: true, message: '请确认密码', trigger: 'blur' },
+        { min: 6, max: 12, message: '请再次输入密码', trigger: 'blur' },
+        ],
+    })
 </script>
 
 <style scoped>
@@ -234,17 +271,20 @@ text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
 }
 
 /* 输入框盒子 */
-.input-box {
+.el-form {
 display: flex;
 /* 纵向布局 */
 flex-direction: column;
 /* 水平居中 */
 align-items: center;
 }
-
+.el-form-item
+{
+    width: 65%;
+}
 /* 输入框 */
 input {
-width: 60%;
+/* width: 60%; */
 height: 40px;
 margin-bottom: 20px;
 text-indent: 10px;
