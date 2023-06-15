@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    redirect:'/helloworld'
+    redirect:'/worlder'
   },
   {
     path: '/helloworld',
@@ -45,6 +45,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import('../components/SearchComponent.vue')
   },
+ 
   {
     path: '/home',
     name: 'home',

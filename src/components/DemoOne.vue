@@ -8,13 +8,13 @@
 			<div class="headin">
 				<div class="headl">
 					<!-- 这里写的是 最上面那条灰色的部分 向左浮动 -->
-					<img src="../components/img/loading.gif" alt="" height="80px" style="margin-top: 5px;float: left;">Outstanding website
+					<img src="../assets/img/loading.gif" alt="" height="80px" style="margin-top: 5px;float: left;">Outstanding website
 				</div>
 				<div class="headr">
-					<p><a href=""><img src="../components/img/1.png" alt="">主页</a></p>
-					<p><a href=""><img src="../components/img/2.png" alt="">导航</a></p>
-					<p><a href=""><img src="../components/img/3.png" alt="">登陆</a></p>
-					<p><a href=""><img src="../components/img/4.png" alt="">注册</a></p>
+					<p><a href=""><img src="../assets/img/1.png" alt="">主页</a></p>
+					<p><a href=""><img src="../assets/img/2.png" alt="">导航</a></p>
+					<p><a href=""><img src="../assets/img/3.png" alt="">登陆</a></p>
+					<p><a href=""><img src="../assets/img/4.png" alt="">注册</a></p>
 				</div>
 			</div>
 			
@@ -36,7 +36,7 @@
 }
 
 body {
-	background: url(../components/img/background1.png);
+	background: url(../assets/img/background1.png);
 	/* 背景图完全覆盖界面 */
 	background-size: cover;
 }

@@ -6,7 +6,7 @@
   </div>
     <div v-if="showReminder" class="reminder-container">
       <p class="countdown-timer">{{ timeRemaining }}s</p>
-      <img src="./img/background2.jpg" alt="休息提醒" />
+      <img src="../assets/img/background2.jpg" alt="休息提醒" />
     </div>
   </div>
 </template>

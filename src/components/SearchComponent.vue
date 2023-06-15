@@ -1,10 +1,6 @@
 <template>
     <div>
-        <el-input
-  v-model="searchQuery"
-  placeholder="请输入搜索内容"
-  @keydown.enter="performSearch"
-></el-input>
+        <el-input v-model="searchQuery" placeholder="请输入搜索内容" @keydown.enter="performSearch"></el-input>
 
   
       <el-checkbox-group v-model="selectedWebsites">

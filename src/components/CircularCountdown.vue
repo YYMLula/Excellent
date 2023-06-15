@@ -65,7 +65,7 @@
 
    <template>
     <div class="clock-container">
-      <img class="background-image" src="./img/background3.jpg" alt="" />
+      <img class="background-image" src="../assets/img/background3.jpg" alt="" />
       <div class="clock">
         <div class="hand" :style="{ transform: `rotate(${rotation}deg)` }"></div>
       </div>
