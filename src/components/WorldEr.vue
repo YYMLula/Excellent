@@ -1,5 +1,6 @@
 <template>
-		<div class="slider">
+ 
+		<div class="slider" >
     <transition-group name="fade" tag="div" class="slider__container" :css="false">
     <div v-for="(image, index) in images" :key="index" class="slider__item" :style="{ backgroundImage: 'url(' + image + ')' }" v-show="currentIndex === index"
 ></div>
@@ -8,14 +9,10 @@
 	<p class="p1">
 	世界很暗，但是你来了
 </p>
-<div @click="onClickBody">
-    <div>
-      {/ * 기존 구성 요소 * /}
-    </div>
-  </div>
+
 <div class="description center-align">
     <span id="subtitle"></span>
-    <span class="typed-cursor" aria-hidden="true">|</span>
+    <!-- <span class="typed-cursor" aria-hidden="true">|</span> -->
   </div>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script> -->
 
@@ -147,11 +144,16 @@ opacity: 0;
   /* align-items: center; */
   color: #ffffff;
 }
-
+*{
+  cursor:url("../assets/img/Arrow.cur"),auto!important
+}
 </style>
 
 <script>
 import Typed from 'typed.js';
+import { rainbowCursor } from "cursor-effects";
+new rainbowCursor;
+
 export default {
 data() {
 return {
@@ -162,12 +164,6 @@ require('../assets/img/background3.jpg')
 ],
 currentIndex: 0,
 intervalId: null,
-a: [
-        "富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治",
-        "爱国", "敬业", "诚信", "友善",
-      ],
-      a_idx: 0
-
 }
 },
 mounted() {
@@ -208,37 +204,7 @@ this.currentIndex = (this.currentIndex + 1) % this.images.length
 }, 5000)
 },
 
-onClickBody(event) {
-      const text = this.a[this.a_idx];
-      this.a_idx = (this.a_idx + 1) % this.a.length;
-      
-      const x = event.pageX;
-      const y = event.pageY;
 
-      const el = document.createElement('span');
-      el.textContent = text;
-      el.style.zIndex = 5;
-      el.style.top = (y - 20) + 'px';
-      el.style.left = x + 'px';
-      el.style.position = 'absolute';
-      el.style.fontWeight = 'bold';
-      el.style.color = '#FF0000';
-
-      document.body.appendChild(el);
-      
-      const animation = el.animate([
-        { top: y - 20 + 'px', opacity: 1 },
-        { top: y - 180 + 'px', opacity: 0 }
-      ], {
-        duration: 3000,
-        fill: 'forwards'
-      });
-
-      // 애니메이션이 끝난 후 요소 제거
-      animation.finished.then(() => {
-        el.remove();
-      });
-    },
   
 
 
