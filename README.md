@@ -4,6 +4,14 @@
 ```
 npm install
 ```
+## 下其他库
+光标拖尾
+npm install cursor-effects
+烟花动画
+npm install animejs --save
+```
+npm install
+```
 
 ### Compiles and hot-reloads for development
 ```
