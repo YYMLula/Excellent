@@ -4,6 +4,8 @@
 ```
 npm install
 ```
+## 一些插件动态字
+npm install typed.js
 
 ### Compiles and hot-reloads for development
 ```

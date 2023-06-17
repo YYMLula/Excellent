@@ -1,5 +1,5 @@
 <template>
- 
+ <!-- 轮播图 -->
 		<div class="slider" >
     <transition-group name="fade" tag="div" class="slider__container" :css="false">
     <div v-for="(image, index) in images" :key="index" class="slider__item" :style="{ backgroundImage: 'url(' + image + ')' }" v-show="currentIndex === index"
@@ -10,8 +10,9 @@
 	世界很暗，但是你来了
 </p>
 
+<!-- 动态字 -->
 <div class="description center-align">
-    <span id="subtitle"></span>
+	<span id="subtitle"></span>
     <!-- <span class="typed-cursor" aria-hidden="true">|</span> -->
   </div>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script> -->
@@ -150,9 +151,9 @@ opacity: 0;
 </style>
 
 <script>
-import Typed from 'typed.js';
-import { rainbowCursor } from "cursor-effects";
-new rainbowCursor;
+import Typed from 'typed.js';//动态字
+// import { rainbowCursor } from "cursor-effects";
+// new rainbowCursor;
 
 export default {
 data() {
@@ -167,38 +168,38 @@ intervalId: null,
 }
 },
 mounted() {
-	this.checkScreenWidthAndLoadScript();
-this.startSlider()
-this.initTypedJs();
+	// this.checkScreenWidthAndLoadScript();
+this.startSlider()//轮转图
+this.initTypedJs();//动态字
 setTimeout(() => {
       this.$refs.buryit && this.$refs.buryit.removeAttribute("onclick");
     }, 2000);
 },
 methods: {
-	checkScreenWidthAndLoadScript() {
-      const windowWidth = window.innerWidth;
-      if (windowWidth > 768) {
-        // 동적으로 스크립트를 추가합니다.
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = '/libs/others/star.js';
-        document.body.appendChild(script);
-      }
-    },
-	initTypedJs() {
+	// checkScreenWidthAndLoadScript() {
+    //   const windowWidth = window.innerWidth;
+    //   if (windowWidth > 768) {
+    //     // 동적으로 스크립트를 추가합니다.
+    //     const script = document.createElement('script');
+    //     script.type = 'text/javascript';
+    //     script.src = '/libs/others/star.js';
+    //     document.body.appendChild(script);
+    //   }
+    // },
+	initTypedJs() {//动态字
       new Typed('#subtitle', {
         strings: [
-          '我是叶易淼，叶易淼是我',
-          '我要睡觉觉',
-          '是谁的君君呀', // 원하는 콘텐츠를 포함한 여러 문자열을 첨부할 수 있습니다
+          '我们要做的是鼓励孩子的内在动机，有技巧地表扬，不去表扬天分或才智。对孩子积极投入的过程进行表扬，如他们的努力与策略，他们的专注、坚持与进步。其中最重要的一条就是，要赞美孩子的努力、策略和选择而非天赋。',
+          '对某个信念倔强的坚持可能会困住你，对痛苦自恋式的沉溺会困住你，反反复复的苦痛和无助会困住你，最后是你心里那个无形的笼子把你锁住了',
+          '远离笼子，跳出来，不要把自己变得无助，那些美好的向往是为了把你变得美好，你的向往很重要，你的梦想很重要，但都比不上你变得更好。', // 원하는 콘텐츠를 포함한 여러 문자열을 첨부할 수 있습니다
         ],
-        typeSpeed: 70, // 캐릭터 입력 속도 조절
-        backSpeed: 50, // 입력 해제 속도 조절
-        loop: true, // 계속 반복할지 여부
+        typeSpeed: 70, // 캐릭터 입력 속도 조절输入速度调节
+        backSpeed: 50, // 입력 해제 속도 조절调整解除输入速度
+        loop: true, // 계속 반복할지 여부是否要重复
       });
     },
   
-startSlider() {
+startSlider() {//轮转图
 this.intervalId = setInterval(() => {
 this.currentIndex = (this.currentIndex + 1) % this.images.length
 }, 5000)

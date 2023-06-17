@@ -1,6 +1,6 @@
 <template>
-  
-     <canvas  class="fireworks" width="667" style="top: 0px; left: 0px; pointer-events: none; position: absolute;" height="307" ></canvas>
+  <!-- 画布  去掉可全局，但部分按钮按不了pointer-events: none-->
+     <canvas  @click="onClickBody" class="fireworks" width="667" style="top: 0px; left: 0px; pointer-events: none; position: absolute;" height="307" ></canvas>
     <!-- <Loginone /> -->
     <!-- <DemoOne  />  -->
     <!-- <div>
@@ -21,8 +21,9 @@
 <script>
 // {/* <script> */}
 import HelloWorld from './components/HelloWorld.vue'
-import { initFireworks } from './fireworks.js';
-
+import { initFireworks } from './fireworks.js';//导入烟花函数
+import { rainbowCursor } from "cursor-effects";//鼠标尾翼
+new rainbowCursor;
 //import DemoOne from './components/DemoOne.vue'
 // import login-dl from './components/login-dl.vue'
 // export default{
@@ -44,25 +45,25 @@ export default {
   setup(){
 
   },
+  // 点击出字效果
   data() {
     return {
       a: [
-        "富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治",
-        "爱国", "敬业", "诚信", "友善",
+        "睡觉", "睡觉", "睡觉", "吃饭", "睡觉", "还是睡觉", "吃饭", 
       ],
       a_idx: 0
     }
   },
   
   mounted() {
-    initFireworks();
-    // 클릭 이벤트를 요소에 연결합니다.
+    initFireworks();//在 mounted() 生命周期钩子内调用 initFireworks 函数 烟花效果
+    // 클릭 이벤트를 요소에 연결합니다.将点击事件连接到元素上，点击出字效果
     setTimeout(() => {
       this.$refs.buryit && this.$refs.buryit.removeAttribute("onclick");
-    }, 1000);
+    }, 1000)
   },
 methods: {
-onClickBody(event) {
+onClickBody(event) {//点击出字效果
       const text = this.a[this.a_idx];
       this.a_idx = (this.a_idx + 1) % this.a.length;
       
@@ -88,7 +89,7 @@ onClickBody(event) {
         fill: 'forwards'
       });
 
-      // 애니메이션이 끝난 후 요소 제거
+      // 애니메이션이 끝난 후 요소 제거动画结束后移除元素
       animation.finished.then(() => {
         el.remove();
       });
