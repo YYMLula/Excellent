@@ -4,8 +4,18 @@
 ```
 npm install
 ```
-## 一些插件动态字
+## 
+
+## 下其他库一些插件
+光标拖尾
+npm install cursor-effects
+烟花动画
+npm install animejs --save
+动态字
 npm install typed.js
+```
+npm install
+```
 
 ### Compiles and hot-reloads for development
 ```
