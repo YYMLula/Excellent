@@ -33,6 +33,7 @@ export default {
   // components: {
   //   CircularCountdown
   // },
+  emits: ["click"], // 添加 "emits" 选项并包含 "click" 事件
   setup() {
     const audioPlayer = ref(null)
     const showReminder = ref(false)
