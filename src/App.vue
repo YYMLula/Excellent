@@ -11,7 +11,7 @@
         <HelloWorld />
       </div>
     </div> -->
-    <TimeTs  />
+    <TimeTs @click="onClickBody" />
     <div @click="onClickBody">
       <HelloWorld  />
     </div>
@@ -119,5 +119,9 @@ body {
 background: url(./assets/img/background1.png);
 /* 背景图完全覆盖界面 */
 background-size: cover;
+}
+/* 全局光标修改 */
+*{
+  cursor:url("./assets/img/Arrow.cur"),auto!important
 }
 </style>

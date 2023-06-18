@@ -3,13 +3,10 @@
     
     <div class="navigation-container">
     <!-- 娱乐 -->
-    <el-card class="navigation-card" header="川师" ><img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          class="image"
-        />
+    <el-card class="navigation-card" header="川师" >
       <el-row :gutter="20">
         <el-col :span="8" v-for="(btn, index) in entertainmentButtons" :key="index">
-          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+          <el-button @click="goTo(btn.path)"  :style="{ backgroundColor: 'rgba(128, 128, 128, 0.5)', borderColor: 'rgba(128, 128, 128, 0.5)' }">{{btn.name}}</el-button>
         </el-col>
         
       </el-row>
@@ -59,6 +56,9 @@
   </template>
   
   <style scoped>
+  
+
+
   .yu {
                   width: 30%;
                   height: 400px;

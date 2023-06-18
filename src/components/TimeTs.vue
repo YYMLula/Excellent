@@ -1,4 +1,8 @@
 <template>
+  <audio ref="audioPlayer">
+  <source src="../../public/美梦是真.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
   <div> 
       <div class="countdown-clock" v-if="showReminder">
         <!-- existing code for countdown clock -->
@@ -23,24 +27,27 @@
 </template>
 
 <script>
-import { ref, computed} from 'vue'
+import { ref, computed } from 'vue'
 // import CircularCountdown from './CircularCountdown.vue';
 export default {
   // components: {
   //   CircularCountdown
   // },
   setup() {
+    const audioPlayer = ref(null)
     const showReminder = ref(false)
     const timeRemaining = ref(0)
 
-    const restTime = 0.2 * 60 * 1000 // 休息5分钟（毫秒）
-    const workTime = 0.1 * 60 * 1000 // 工作30分钟（毫秒）
+    const restTime = 1 * 60 * 1000 // 休息5分钟（毫秒）
+    const workTime = 1 * 60 * 1000 // 工作30分钟（毫秒）
 
     const startReminderInterval = () => {
       setTimeout(() => {
         showReminder.value = true
         timeRemaining.value = restTime / 1000
-       
+
+        audioPlayer.value.play()
+
         const countdownInterval = setInterval(() => {
           timeRemaining.value -= 1;
           updateDigits();
@@ -49,6 +56,12 @@ export default {
         setTimeout(() => {
           clearInterval(countdownInterval)
           showReminder.value = false
+          
+          // Pause audio
+      audioPlayer.value.pause()
+      // Reset audio to the beginning
+      audioPlayer.value.currentTime = 0
+
           startReminderInterval()
         }, restTime)
       }, workTime)
@@ -72,7 +85,7 @@ export default {
     // 初始化提醒
     startReminderInterval()
 
-    return { showReminder, digits,timeRemaining }
+    return { showReminder, digits,timeRemaining, audioPlayer }
   },
 }
 </script>
