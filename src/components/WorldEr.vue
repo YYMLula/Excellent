@@ -25,11 +25,7 @@ margin: 0;
 padding: 0;
 }
 
-body {
-background: url(../assets/img/background1.png);
-/* 背景图完全覆盖界面 */
-background-size: cover;
-}
+
 
 a {
 color: white;

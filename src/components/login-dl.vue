@@ -17,20 +17,26 @@
         <h1>注册</h1>
     </div>
     <!-- 输入框盒子 -->
+    <!-- <div class="input-box">
+        <input type="text" placeholder="用户名"/>
+        <input type="password" placeholder="密码"/>
+        <input type="password" placeholder="确认密码"/>
+        <el-input></el-input>
+    </div> -->
     <el-form ref="RegisterFormRef" :model="RegisterForm" :rules="rules" label-width="5px">
-                <el-form-item prop="username" label=" ">
-                    <el-input type="text" placeholder="用户名" :suffix-icon="User" v-model="RegisterForm.username"/>
-                </el-form-item>  
-                <el-form-item prop="password" label=" ">
-                    <el-input type="password" placeholder="密码" :suffix-icon="Lock" v-model="RegisterForm.password"/>
-                </el-form-item>  
-                <el-form-item prop="confirmPassword" label=" ">
-                    <el-input type="password" placeholder="确认密码" :suffix-icon="Lock" v-model="RegisterForm.confirmPassword"/>
-                </el-form-item>  
-            </el-form>
+        <el-form-item prop="username" label=" ">
+            <el-input type="text" placeholder="用户名" :suffix-icon="User" v-model="RegisterForm.username"/>
+        </el-form-item>  
+        <el-form-item prop="password" label=" ">
+            <el-input type="password" placeholder="密码" :suffix-icon="Lock" v-model="RegisterForm.password"/>
+        </el-form-item>  
+        <el-form-item prop="confirmPassword" label=" ">
+            <el-input type="password" placeholder="确认密码" :suffix-icon="Lock" v-model="RegisterForm.confirmPassword"/>
+        </el-form-item>  
+    </el-form>
     <!-- 按钮盒子 -->
     <div class="btn-box">
-        <button>注册</button>
+        <button @click="handleClickUser">注册</button>
         <!-- 绑定点击事件 -->
         <p @click="mySwitch">已有账号?去登录</p>
     </div>
@@ -42,17 +48,21 @@
         <h1>登录</h1>
     </div>
     <!-- 输入框盒子 -->
+    <!-- <div class="input-box">
+        <input type="text" placeholder="用户名"/>
+        <input type="password" placeholder="密码"/>
+    </div>                -->
     <el-form ref="loginFormRef" :model="loginForm" :rules="rules" label-width="5px">
-                <el-form-item prop="username" label=" ">
-                    <el-input type="text" placeholder="用户名" :suffix-icon="User" v-model="loginForm.username"/>
-                </el-form-item>  
-                <el-form-item prop="password" label=" ">
-                    <el-input type="password" placeholder="密码" :suffix-icon="Lock" v-model="loginForm.password"/>
-                </el-form-item>    
-            </el-form>
+        <el-form-item prop="username" label=" ">
+            <el-input type="text" placeholder="用户名" :suffix-icon="User" v-model="loginForm.username"/>
+        </el-form-item>  
+        <el-form-item prop="password" label=" ">
+            <el-input type="password" placeholder="密码" :suffix-icon="Lock" v-model="loginForm.password"/>
+        </el-form-item>    
+    </el-form>
     <!-- 按钮盒子 -->
     <div class="btn-box">
-        <button>登录</button>
+        <button @click="handleClickLoginIn">登录</button>
         <!-- 绑定点击事件 -->
         <p @click="mySwitch">没有账号?去注册</p>
     </div>
@@ -62,48 +72,85 @@
 </template>
 
 <script setup>
-    import {reactive,ref} from 'vue'
-    import{Lock,User} from '@element-plus/icons-vue'
-    const preRef=ref('')
-    const imgList=ref([require('@/assets/wuwu.jpeg'),require('@/assets/waoku.jpg')])
-    let flag=ref(true)
-    const mySwitch=()=>{
-            if(flag.value)
-            {
-                preRef.value.style.background='#c9e0ed'
-                preRef.value.style.transform='translateX(100%)'
-            }else{
-                preRef.value.style.background='#edd4dc'
-                preRef.value.style.transform='translateX(0%)'
-                // img.src=require("@/assets/img/waoku.jpg")
-            }
-            flag.value=!flag.value
+import {reactive,ref} from 'vue'
+import {userLoginIn, userRegist} from '../api';
+import{Lock,User} from '@element-plus/icons-vue'
+const preRef=ref('')
+const imgList=ref([require('@/assets/img/wuwu.jpg'),require('@/assets/img/waoku.jpg')])
+let flag=ref(true)
+const mySwitch=()=>{
+    if(flag.value)
+    {
+        preRef.value.style.background='#rgb(73,124,187,0.5)'
+        preRef.value.style.transform='translateX(100%)'
+    }else{
+        preRef.value.style.background='#rgb(73,124,187,0.5)'
+        preRef.value.style.transform='translateX(0%)'
+        // img.src=require("@/assets/img/waoku.jpg")
     }
-    const loginForm=reactive({
-        username:'',
-        password:''
-    })
-    const RegisterForm=reactive({
-        username:'',
-        password:'',
-        confirmPassword:''
-    })
-    const loginFormRef=ref('')
-    const RegisterFormRef=ref('')
-    const rules=reactive({
-        username: [
-        { required: true, message: '请输入用户名', trigger: 'blur' },
-        { min: 3, max: 5, message: '长度在3-5个字符之间', trigger: 'blur' },
-        ],
-        password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
-        { min: 6, max: 12, message: '长度在6-12个字符之间', trigger: 'blur' },
-        ],
-        confirmPassword: [
-        { required: true, message: '请确认密码', trigger: 'blur' },
-        { min: 6, max: 12, message: '请再次输入密码', trigger: 'blur' },
-        ],
-    })
+    flag.value=!flag.value
+}
+const loginForm=reactive({
+username:'',
+password:''
+});
+// 用于暂存注册数据对象
+// 对象的key不能重复 -》 一个用户的用户名不可以重复
+const userInfo = reactive({
+'123': '123456'
+});
+const RegisterForm=reactive({
+username:'',
+password:'',
+confirmPassword:''
+});
+// 点击注册
+const handleClickUser = () => {
+if (RegisterForm.password !== RegisterForm.confirmPassword) {
+    window.alert('两次密码不相同');
+    return;
+}
+if (userInfo[RegisterForm.username]) {
+    window.alert('用户名与已注册的用户名相同');
+    return;
+}
+// 请求注册
+userRegist(loginForm).then(() => {
+    userInfo[RegisterForm.username] = RegisterForm.confirmPassword;
+    // 注册成功后续
+    window.alert('注册成功，可以登录了');
+});
+};
+// 点击登录
+const handleClickLoginIn = () => {
+const key = Object.keys(userInfo); // []
+// 请求登录
+userLoginIn(loginForm).then(() => {
+    if (
+        (loginForm.username === 'admin' && loginForm.password === '123456') ||
+        (key.includes(loginForm.username) && loginForm.password === userInfo[loginForm.username])
+    ) {
+        // 登录后续操作
+        window.alert('登陆成功');
+    }
+});
+};
+const loginFormRef=ref('')
+const RegisterFormRef=ref('')
+const rules=reactive({
+username: [
+{ required: true, message: '请输入用户名', trigger: 'blur' },
+{ min: 3, max: 5, message: '长度在3-5个字符之间', trigger: 'blur' },
+],
+password: [
+{ required: true, message: '请输入密码', trigger: 'blur' },
+{ min: 6, max: 12, message: '长度在6-12个字符之间', trigger: 'blur' },
+],
+confirmPassword: [
+{ required: true, message: '请确认密码', trigger: 'blur' },
+{ min: 6, max: 12, message: '请再次输入密码', trigger: 'blur' },
+],
+})
 </script>
 
 <style scoped>
@@ -118,28 +165,31 @@ height: 100vh;
 overflow-x: hidden;
 display: flex;
 /* 渐变方向从左到右 */
-background: linear-gradient(to right, rgb(247, 209, 215), rgb(191, 227, 241));
+background: linear-gradient(to right, #e0e25f, rgb(87, 208, 118));
+background-image: url('../assets/img/background2.jpg');
+background-size: cover;
+background-position: center;
 }
 
-span {
+/* span {
 position: absolute;
 z-index: 0;
 bottom: 0;
 border-radius: 50%;
 /* 径向渐变 */
-background: radial-gradient(circle at 72% 28%, #fff 3px, #ff7edf 8%, #5b5b5b, #aad7f9 100%);
+/* background: radial-gradient(circle at 72% 28%, #fff 3px, #ff7edf 8%, #5b5b5b, #aad7f9 100%); */
 /* 泡泡内阴影 */
-box-shadow: inset 0 0 6px #fff,
+/* box-shadow: inset 0 0 6px #fff,
 inset 3px 0 6px #eaf5fc,
 inset 2px -2px 10px #efcde6,
 inset 0 0 60px #f9f6de,
-0 0 20px #fff;
+0 0 20px #fff; */
 /* 动画 */
-animation: myMove 4s linear infinite;
-}
+/* animation: myMove 4s linear infinite;
+} */ 
 
 
-@keyframes myMove {
+/* @keyframes myMove {
 0% {
 transform: translateY(0%);
 opacity: 1;
@@ -161,7 +211,7 @@ opacity: .9;
 transform: translateY(-1800%) scale(1.5);
 opacity: 0;
 }
-}
+} */
 
 /* 最外层的大盒子 */
 .box {
@@ -175,7 +225,7 @@ margin: auto;
 /* 设置圆角 */
 border-radius: 8px;
 /* 设置边框 */
-border: 1px solid rgba(255, 255, 255, .6);
+border: 0px solid rgba(255, 255, 255, 0);
 /* 设置盒子阴影 */
 box-shadow: 2px 1px 19px rgba(0, 0, 0, .1);
 }
@@ -194,8 +244,8 @@ left: 0;
 top: 0;
 z-index: 99;
 border-radius: 4px;
-background-color: #edd4dc;
-box-shadow: 2px 1px 19px rgba(0, 0, 0, .1);
+background-color: rgba(255, 255, 255, 0.5);
+box-shadow: 2px 1px 19px rgba(142, 124, 35, 0.263);
 /* 动画过渡，先加速再减速 */
 transition: 0.5s ease-in-out;
 }
@@ -211,6 +261,8 @@ color: white;
 user-select: none;
 /* 文字阴影 */
 text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
+font-family: 华文行楷, sans-serif;
+font-size: 80px;
 }
 
 /* 滑动盒子的文字 */
@@ -228,8 +280,8 @@ text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
 
 /* 图片盒子 */
 .img-box {
-width: 200px;
-height: 200px;
+width: 250px;
+height: 250px;
 margin: 20px auto;
 /* 设置为圆形 */
 border-radius: 50%;
@@ -245,6 +297,11 @@ width: 100%;
 transition: 0.5s;
 }
 
+/*这段代码定义了两个 CSS 类 .login-form 和 .register-form，
+它们都具有 flex: 1 和 height: 100% 的属性。
+这意味着这两个类的元素将会占据其父元素的全部高度，
+并且它们的宽度将会根据它们的父元素的宽度进行自适应调整。
+这段代码可能是用于创建一个登录和注册表单的盒子，这些表单将会占据整个屏幕高度。 */
 /* 登录和注册盒子 */
 .login-form,
 .register-form {
@@ -267,20 +324,21 @@ color: white;
 user-select: none;
 letter-spacing: 5px;
 text-shadow: 4px 4px 3px rgba(0, 0, 0, .1);
-
+font-family: 华文行楷;
+font-size: 40px;
+font-weight: 300;
 }
 
 /* 输入框盒子 */
-.el-form {
+.el-form{
 display: flex;
 /* 纵向布局 */
 flex-direction: column;
 /* 水平居中 */
 align-items: center;
 }
-.el-form-item
-{
-    width: 65%;
+.el-form-item{
+width: 65%;
 }
 /* 输入框 */
 input {

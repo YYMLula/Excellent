@@ -1,145 +1,61 @@
 <template> 
-          <div class="headin">
-  
-              <div class="yu">
-                  <p style="line-height: 40px">娱乐·影视</p>
-                  <div class="btn">
-                      <p>
-                          <a href="https://www.jd.com/?cu=true&utm_source=haosou-pinzhuan&utm_medium=cpc&utm_campaign=t_288551095_haosoupinzhuan&utm_term=0a875d61c5fe47d8bc48679132932d23_0_d155d5f8eaa745258902f2bbb87ecbb1"><button>京东</button></a>						
-                          <a href="https://uland.taobao.com/sem/tbsearch?refpid=mm_26632360_8858797_29866178&keyword=%E7%94%B5%E5%99%A8&clk1=08a50e3c1755be0d024303840acae080&upsId=08a50e3c1755be0d024303840acae080"><button>淘宝</button></a>
-  
-                          <button>天猫</button>
-                      </p>
-                      <p>
-                          <button>Pixiv</button>
-                          <button>萌娘百科</button>
-                          <button>哗哩哗哩</button>
-                      </p>
-                      <p>
-                          <button>NETFLIX</button>
-                          <button>Spotify</button>
-                      </p>
-                  </div>
-              </div>
-  
-              <div class="yu">
-                  <p style="line-height: 40px">社区·Code</p>
-                  <div class="btn">
-                      <p>
-                          <button>留言</button>
-                          <button>GitHub</button>
-                          <button>Coding</button>
-                      </p>
-                      <p>
-                          <button>掘金</button>
-                          <button>码云</button>
-                          <button>V2EX</button>
-                      </p>
-                      <p>
-                          <button>简书</button>
-                          <button>吾爱破解</button>
-                          <button>思否</button>
-                      </p>
-                      <p>
-                          <button>云+社区</button>
-                          <button>36氛</button>
-                      </p>
-                  </div>
-              </div>
-  
-              <div class="yu">
-                  <p style="line-height: 40px">图片处理</p>
-                  <div class="btn" style="height: 180px">
-                      <p>
-                          <button>TingPNG</button>
-                          <button>又拍云Webp</button>
-                          <button>IconFont</button>
-                      </p>
-                      <p>
-                          <button>AweSome</button>
-                          <button>超清壁纸</button>
-                          <button>在线PS</button>
-                      </p>
-                  </div>
-                  <p style="line-height: 40px">实用·工具</p>
-                  <div class="btn">
-                      <p>
-                          <button>Nice编辑器</button>
-                          <button>思维导图</button>
-                          <button>一维码</button>
-                      </p>
-                      <p>
-                          <button>音范思</button>
-                          <button>OW分发</button>
-                          <button>BV转A</button>
-                      </p>
-                      <p>
-                          <button>GUID在线生成</button>
-                          <button>又拍云刷新网站</button>
-                      </p>
-                  </div>
-              </div>
-          </div>
-  
-          <div class="headin">
-              <div class="yu" style="height: 300px">
-                  <p style="line-height: 40px">编程·学习</p>
-                  <div class="btn" style="height: 200px">
-                      <p>
-                          <button>开源中国</button>
-                          <button>HTML狗</button>
-                          <button>中国大学慕课</button>
-                      </p>
-                      <p>
-                          <button>慕课网</button>
-                          <button>小程序</button>
-                          <button>51CTO</button>
-                      </p>
-                      <p>
-                          <button>实验楼</button>
-                          <button>Spring</button>
-                      </p>
-                  </div>
-              </div>
-              <div class="yu" style="height: 300px">
-                  <p style="line-height: 40px">资讯·趋势</p>
-                  <div class="btn">
-                      <p><button>虎嗅</button>
-                          <button>技术调查</button>
-                          <button>摸鱼</button>
-                      </p>
-                      <p>
-                          <button>少数派</button>
-                          <button>WikeHom</button>
-                          <button>前端趋势</button>
-                      </p>
-                      <p>
-                          <button>京东</button>
-                          <button>淘宝</button>
-                          <button>淘宝</button>
-                      </p>
-                  </div>
-              </div>
-              <div class="yu" style="height: 300px">
-                  <p style="line-height: 40px">搜索·其他</p>
-                  <div class="btn" style="height: 180px">
-                      <p>
-                          <button>网盘搜索</button>
-                          <button>音乐搜索</button>
-                          <button>天猫</button>
-                      </p>
-                      <p>
-                          <button>代码图片</button>
-                          <button>Boos</button>
-                          <button>天猫</button>
-                      </p>
-                      <p>
-                          <button>京东</button>
-                          <button>淘宝</button>
-                      </p>
-                  </div>
-              </div>
-          </div>
+<div class="common-layout">
+    
+    <div class="navigation-container">
+    <!-- 娱乐 -->
+    <el-card class="navigation-card" header="川师" ><img
+          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+          class="image"
+        />
+      <el-row :gutter="20">
+        <el-col :span="8" v-for="(btn, index) in entertainmentButtons" :key="index">
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+        </el-col>
+        
+      </el-row>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('entertainment')" >+</el-button>
+    </el-card>
+
+    <!-- 社区 -->
+    <el-card class="navigation-card" header="书">
+      <el-row :gutter="20">
+        <el-col :span="8" v-for="(btn, index) in communityButtons" :key="index">
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+        </el-col>
+      </el-row>
+    </el-card>
+
+    <!-- 图片 -->
+    <el-card class="navigation-card" header="影">
+      <el-row :gutter="20">
+        <el-col :span="8" v-for="(btn, index) in picturesButtons" :key="index">
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+        </el-col>
+      </el-row>
+    </el-card>
+
+
+    <el-dialog title="添加新页面" v-model="newPageDialogVisible">
+      <el-form ref="newPageForm" :model="newPageForm" label-width="100px">
+        <el-form-item label="页面名称">
+          <el-input v-model="name" placeholder="Please input"></el-input>
+        </el-form-item>
+        <el-form-item label="页面链接">
+          <el-input v-model="path"></el-input>
+        </el-form-item>
+      </el-form>
+      <template v-slot:footer>
+        <el-button @click="newPageDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="addNewPage">确认</el-button>
+      </template>
+</el-dialog>
+
+
+  </div>
+
+
+  </div>
+          
   </template>
   
   <style scoped>
@@ -180,7 +96,118 @@
                   height: 40px;
                   border: 0;
               }
-              
+              .navigation-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.navigation-card {
+  width: 30%;
+  margin: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .navigation-card {
+    width: 100%;
+  }
+}
+.navigation-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.navigation-card {
+  width: 30%;
+  margin: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .navigation-card {
+    width: 100%;
+  }
+}.image {
+  width: 100%;
+  display: block;
+}
   </style>
   
+  <script>
+  import {reactive,toRefs,ref} from 'vue'
+export default {
+    setup(){
+        const name=ref('')
+        const path=ref('')
+        const state =reactive({
+            entertainmentButtons: [
+        { path: "https://www.zhihuishu.com", name: "智慧树" },
+        { path: "https://www.educoder.net/", name: "头歌" },
+        { path: "https://pintia.cn/", name: "PTA" },
+        { path: "https://changjiang.yuketang.cn/", name: "雨课堂" },
+        { path: "https://www.educoder.net/", name: "头歌" },
+        { path: "https://www.educoder.net/", name: "头歌" },
+        { path: "https://www.educoder.net/", name: "头歌" },
+        { path: "https://www.educoder.net/", name: "头歌" },
+      ],
+      communityButtons: [
+        { path: "/community/page1.html", name: "社区1" },
+        { path: "/community/page2.html", name: "社区2" },
+        { path: "/community/page3.html", name: "社区3" },
+      ],
+      picturesButtons: [
+        { path: "/pictures/page1.html", name: "图片1" },
+        { path: "/pictures/page2.html", name: "图片2" },
+        { path: "/pictures/page3.html", name: "图片3" },
+      ],
+      newPageDialogVisible: false,
+      newPageForm: {
+        name: "",
+        path: ""
+      },
+      currentTheme: ""
+   
+        });
+
+        const openDialog = (theme) => {
+      state.currentTheme = theme;
+      state.newPageDialogVisible = true;
+    };
+
+    const addNewPage = () => {
+      const newButton = {
+        name: name.value,
+        path: path.value,
+      };
+      if (state.currentTheme === "entertainment") {
+    state.entertainmentButtons.push(newButton);
+  } else if (state.currentTheme === "community") {
+    state.communityButtons.push(newButton);
+  } else if (state.currentTheme === "pictures") {
+    state.picturesButtons.push(newButton);
+  }
+     // 重置表单
+     name.value = "";
+     path.value = "";
+
+      // 关闭对话框
+      state.newPageDialogVisible = false;
+    };
+
+    const goTo = (path) => {
+      //window.location.href = path;
+      window.open(path, '_blank');
+    };
+
+    return {
+      ...toRefs(state),
+      openDialog,
+      addNewPage,
+      goTo,
+        name,
+        path
+    };
+    },
   
+};
+</script>

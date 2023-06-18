@@ -11,6 +11,7 @@
         <HelloWorld />
       </div>
     </div> -->
+    <TimeTs  />
     <div @click="onClickBody">
       <HelloWorld  />
     </div>
@@ -21,6 +22,7 @@
 <script>
 // {/* <script> */}
 import HelloWorld from './components/HelloWorld.vue'
+import TimeTs from './components/TimeTs.vue'
 import { initFireworks } from './fireworks.js';//导入烟花函数
 import { rainbowCursor } from "cursor-effects";//鼠标尾翼
 new rainbowCursor;
@@ -40,7 +42,8 @@ new rainbowCursor;
 // }
 export default {
   components:{
-    HelloWorld
+    HelloWorld,
+    TimeTs
   },
   setup(){
 
@@ -111,5 +114,10 @@ onClickBody(event) {//点击出字效果
   /* text-align: center; */
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+body {
+background: url(./assets/img/background1.png);
+/* 背景图完全覆盖界面 */
+background-size: cover;
 }
 </style>

@@ -64,6 +64,9 @@
    -->
 
    <template>
+    <div class="reminder-container">
+      <p class="reminder-text">您已经使用电脑超过30分钟咯，快起来休息五分钟放松眼睛吧！！！</p>
+    </div>
     <div class="clock-container">
       <img class="background-image" src="../assets/img/background3.jpg" alt="" />
       <div class="clock">

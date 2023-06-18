@@ -1,23 +1,34 @@
 <template>
-  <div>
-    <div>
-    <!-- The rest of your template code -->
-    <CircularCountdown v-if="showReminder" :timeRemaining="timeRemaining" />
-  </div>
-    <div v-if="showReminder" class="reminder-container">
-      <p class="countdown-timer">{{ timeRemaining }}s</p>
-      <img src="../assets/img/background2.jpg" alt="休息提醒" />
+  <div> 
+      <div class="countdown-clock" v-if="showReminder">
+        <!-- existing code for countdown clock -->
+        <div class="reminder-container">
+        <p class="reminder-text">您已经使用电脑超过30分钟咯，快起来休息五分钟放松眼睛吧！！！</p>
+      </div>
+      
+      <!-- <div class="countdown-clock"> -->
+      <div class="clock-container">
+        <div class="clock">
+          <div class="digit" v-for="(digit, index) in digits" :key="index">
+            {{ digit }}
+          </div>
+        </div>
+        
+      </div>
+      
+    <!-- </div> -->
+      </div>
+      
     </div>
-  </div>
 </template>
 
 <script>
-import { ref} from 'vue'
-import CircularCountdown from './CircularCountdown.vue';
+import { ref, computed} from 'vue'
+// import CircularCountdown from './CircularCountdown.vue';
 export default {
-  components: {
-    CircularCountdown
-  },
+  // components: {
+  //   CircularCountdown
+  // },
   setup() {
     const showReminder = ref(false)
     const timeRemaining = ref(0)
@@ -29,8 +40,10 @@ export default {
       setTimeout(() => {
         showReminder.value = true
         timeRemaining.value = restTime / 1000
+       
         const countdownInterval = setInterval(() => {
-          timeRemaining.value -= 1
+          timeRemaining.value -= 1;
+          updateDigits();
         }, 1000)
 
         setTimeout(() => {
@@ -41,10 +54,25 @@ export default {
       }, workTime)
     }
 
+    const updateDigits = () => {
+  const minutes = Math.floor(timeRemaining.value / 60);
+  const seconds = timeRemaining.value % 60;
+  return [
+    Math.floor(minutes / 10),
+    minutes % 10,
+    ":",
+    Math.floor(seconds / 10),
+    seconds % 10,
+  ];
+};
+
+    const digits = computed(updateDigits);
+
+
     // 初始化提醒
     startReminderInterval()
 
-    return { showReminder, timeRemaining }
+    return { showReminder, digits,timeRemaining }
   },
 }
 </script>
@@ -65,4 +93,56 @@ export default {
   font-size: 18px;
   border-radius: 5px;
 }
+.countdown-clock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    box-shadow: 0px 0px 10px black;
+    font-family: "幼圆", sans-serif;
+    background-image: url('../assets/img/background2.jpg');
+  }
+  
+  .clock-container {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .clock {
+    font-size: 10rem;
+    display: flex;
+  }
+  
+  .digit {
+    margin: 0 0.5rem;
+    color:aliceblue;
+  }
+  .reminder-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    font-family: "华文行楷", sans-serif;
+    font-size: 80px;
+  }
+  
+  .reminder-text {
+    font-size: 40px;
+    color:whitesmoke;
+  }
+  
+  .button1{
+    width: 120px;
+    height: 50px;
+    font-size: 35px;
+    border: 1px solid whitesmoke;
+    box-shadow: 0px 0px 4px black;
+    background-color: transparent;
+    color: azure;
+    font-family: 华文行楷;
+  }
 </style>
