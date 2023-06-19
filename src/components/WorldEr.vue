@@ -71,12 +71,16 @@ margin-top: 30px;
 }
 
 .p1 {
-color: white;
-font-size: 60px;
-text-align: center;
-line-height: 500px;
-font-family: youyuan;
-margin-bottom: -200px;
+	margin-top: 200px; /* 设置元素距离页面顶部200px */
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    font-family: youyuan;
+    line-height: 100%;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    margin-bottom: auto;
 }
 
 .p2 {

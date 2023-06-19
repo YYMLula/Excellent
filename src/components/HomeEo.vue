@@ -1,41 +1,75 @@
 <template> 
 <div class="common-layout">
     
-    <div class="navigation-container">
-    <!-- 娱乐 -->
-    <el-card class="navigation-card" header="川师" >
+  <div class="navigation-container">
+    <!-- 学科 -->
+    <el-card class="navigation-card" header="学科学习" >
       <el-row :gutter="20">
         <el-col :span="8" v-for="(btn, index) in entertainmentButtons" :key="index">
-          <el-button @click="goTo(btn.path)"  :style="{ backgroundColor: 'rgba(128, 128, 128, 0.5)', borderColor: 'rgba(128, 128, 128, 0.5)' }">{{btn.name}}</el-button>
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
         </el-col>
         
       </el-row>
-      <el-button icon="el-icon-plus"  circle @click="openDialog('entertainment')" >+</el-button>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('entertainment')" >添加+</el-button>
     </el-card>
 
-    <!-- 社区 -->
-    <el-card class="navigation-card" header="书">
+    <!-- 电子书 -->
+    <el-card class="navigation-card" header="电子书">
       <el-row :gutter="20">
         <el-col :span="8" v-for="(btn, index) in communityButtons" :key="index">
           <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
         </el-col>
       </el-row>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('community')" >添加+</el-button>
     </el-card>
 
-    <!-- 图片 -->
-    <el-card class="navigation-card" header="影">
+    <!-- 影视 -->
+    <el-card class="navigation-card" header="音乐">
       <el-row :gutter="20">
         <el-col :span="8" v-for="(btn, index) in picturesButtons" :key="index">
           <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
         </el-col>
       </el-row>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('pictures')" >添加+</el-button>
     </el-card>
 
+    <!-- one -->
+    <el-card class="navigation-card" header="购物" >
+      <el-row :gutter="20">
+        <el-col :span="8" v-for="(btn, index) in oneButtons" :key="index">
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+        </el-col>
+        
+      </el-row>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('one')" >添加+</el-button>
+    </el-card>
+
+    <!-- two -->
+    <el-card class="navigation-card" header="影视" >
+      <el-row :gutter="20">
+        <el-col :span="8" v-for="(btn, index) in twoButtons" :key="index">
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+        </el-col>
+        
+      </el-row>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('two')" >添加+</el-button>
+    </el-card>
+
+    <!-- three -->
+    <el-card class="navigation-card" header="待定" >
+      <el-row :gutter="20">
+        <el-col :span="8" v-for="(btn, index) in threeButtons" :key="index">
+          <el-button @click="goTo(btn.path)">{{btn.name}}</el-button>
+        </el-col>
+        
+      </el-row>
+      <el-button icon="el-icon-plus"  circle @click="openDialog('three')" >添加+</el-button>
+    </el-card>
 
     <el-dialog title="添加新页面" v-model="newPageDialogVisible">
       <el-form ref="newPageForm" :model="newPageForm" label-width="100px">
         <el-form-item label="页面名称">
-          <el-input v-model="name" placeholder="Please input"></el-input>
+          <el-input v-model="name" placeholder="请输入"></el-input>
         </el-form-item>
         <el-form-item label="页面链接">
           <el-input v-model="path"></el-input>
@@ -56,9 +90,6 @@
   </template>
   
   <style scoped>
-  
-
-
   .yu {
                   width: 30%;
                   height: 400px;
@@ -101,36 +132,43 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+.el-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 80px;
+  width:100px;
+  background-color: rgba(36, 36, 37, 0.3);
+  color: rgb(3, 3, 3);
+  font-size: 20px;
+  font-weight: 900;
+  border: none;
+}
 
 .navigation-card {
   width: 30%;
-  margin: 20px;
+  height: 25%;
+  margin: 100px 20px 20px 20px;
+  background-color: rgba(233, 209, 222, 0.1);
+  border: none;
 }
 
-@media screen and (max-width: 992px) {
-  .navigation-card {
-    width: 100%;
-  }
-}
 .navigation-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.navigation-card {
-  width: 30%;
-  margin: 20px;
-}
 
 @media screen and (max-width: 992px) {
   .navigation-card {
-    width: 100%;
+    width: 99%;
   }
 }.image {
   width: 100%;
   display: block;
 }
+
+
   </style>
   
   <script>
@@ -142,23 +180,33 @@ export default {
         const state =reactive({
             entertainmentButtons: [
         { path: "https://www.zhihuishu.com", name: "智慧树" },
-        { path: "https://www.educoder.net/", name: "头歌" },
         { path: "https://pintia.cn/", name: "PTA" },
         { path: "https://changjiang.yuketang.cn/", name: "雨课堂" },
-        { path: "https://www.educoder.net/", name: "头歌" },
-        { path: "https://www.educoder.net/", name: "头歌" },
-        { path: "https://www.educoder.net/", name: "头歌" },
-        { path: "https://www.educoder.net/", name: "头歌" },
+
+
       ],
       communityButtons: [
-        { path: "/community/page1.html", name: "社区1" },
-        { path: "/community/page2.html", name: "社区2" },
-        { path: "/community/page3.html", name: "社区3" },
+        { path: "https://lib.sicnu.edu.cn/index", name: "川师图书馆" },
+        { path: "https://www.dushu.com", name: "读书网" },
+        { path: "https://new.shuge.org/", name: "书格" },
       ],
       picturesButtons: [
-        { path: "/pictures/page1.html", name: "图片1" },
-        { path: "/pictures/page2.html", name: "图片2" },
-        { path: "/pictures/page3.html", name: "图片3" },
+        { path: "https://www.kugou.com/", name: "酷狗音乐" },
+        { path: "https://y.qq.com/", name: "QQ音乐" },
+        { path: "https://music.163.com/", name: "网易云音乐" },
+      ],
+      oneButtons: [
+        { path: "https://www.tmall.com/", name: "天猫" },
+        { path: "https://www.jd.com/", name: "京东" },
+        { path: "https://www.amazon.cn/", name: "亚马逊" },
+      ],
+      twoButtons: [
+        { path: "https://www.iqiyi.com/", name: "爱奇艺" },
+        { path: "https://v.qq.com/", name: "腾讯视频" },
+        { path: "https://youku.com/", name: "优酷" },
+      ],
+      threeButtons: [
+        { path: "/pictures/page2.html", name: "待定" },
       ],
       newPageDialogVisible: false,
       newPageForm: {
@@ -185,6 +233,12 @@ export default {
     state.communityButtons.push(newButton);
   } else if (state.currentTheme === "pictures") {
     state.picturesButtons.push(newButton);
+  }else if (state.currentTheme === "one") {
+    state.oneButtons.push(newButton);
+  }else if (state.currentTheme === "two") {
+    state.twoButtons.push(newButton);
+  }else if (state.currentTheme === "three") {
+    state.threeButtons.push(newButton);
   }
      // 重置表单
      name.value = "";
