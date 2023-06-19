@@ -1,25 +1,81 @@
 <template>
-    <div>
-        <el-input v-model="searchQuery" placeholder="请输入搜索内容" @keydown.enter="performSearch"></el-input>
+  <div>
+    <el-input
+      v-model="searchQuery" placeholder="请输入搜索内容" @keydown.enter="performSearch"></el-input>
+    <el-checkbox v-model="checkAll" :indeterminate="isIndeterminate" @change="handleCheckAllChange">
+      全选
+    </el-checkbox>
+    <el-checkbox-group v-model="selectedWebsites" @change="handleCheckedCitiesChange">
+      <el-checkbox-button border v-for="website in websites" :key="website.name" :label="website">
+        {{ website.name }}
+      </el-checkbox-button>
+    </el-checkbox-group>
 
-  
-      <el-checkbox-group v-model="selectedWebsites">
-        <el-checkbox label="Website1">B站</el-checkbox>
-        <el-checkbox label="Website2">低端影视</el-checkbox>
-        <!-- 在这里添加其他网站的复选框 -->
-      </el-checkbox-group>
-  
-      <el-button type="primary" @click="performSearch">搜索</el-button>
-    </div>
-  </template>
+    <el-button type="primary" @click="performSearch">搜索</el-button>
+  </div>
+</template>
+
 <script>
+import { ref } from "vue";
+
 export default {
-  data() {
+  setup() {
+    const searchQuery = ref("");
+    const selectedWebsites = ref([]);
+    const checkAll = ref(false);
+    const isIndeterminate = ref(true);
+
+    const websites = [
+    
+      { name: "B站", path: "https://www.bilibili.com/search?q=" },
+      { name: "底端影视", path: "https://ddys.art/?s=" },
+      { name: "小橘子", path: "https://xiaojuzi.link/show/0?title=" },
+    ];
+
+    const handleCheckAllChange = (val) => {
+      selectedWebsites.value = val ? websites : [];
+      isIndeterminate.value = false;
+    };
+
+    const handleCheckedCitiesChange = (value) => {
+      const checkedCount = value.length;
+      checkAll.value = checkedCount === websites.length;
+      isIndeterminate.value = checkedCount > 0 && checkedCount < websites.length;
+    };
+
+    const performSearch = () => {
+      if (searchQuery.value.trim() === "") {
+        alert("请输入搜索内容");
+        return;
+      }
+
+      if (selectedWebsites.value.length === 0) {
+        alert("请选择要搜索的网站");
+        return;
+      }
+
+      selectedWebsites.value.forEach((website) => {
+        const url = `${website.path}${encodeURIComponent(searchQuery.value)}`;
+        if (url) {
+          window.open(url, "_blank");
+        }
+      });
+    };
+
     return {
-      searchQuery: "",
-      selectedWebsites: []
+      searchQuery,
+      selectedWebsites,
+      performSearch,
+      handleCheckAllChange,
+      handleCheckedCitiesChange,
+      checkAll,
+      isIndeterminate,
+      websites,
     };
   },
+};
+</script>
+
 
 //   methods: {
 //   async performSearch() {
@@ -36,8 +92,8 @@ export default {
 //     for (let website of this.selectedWebsites) {
 //       let url = "";
 //       if (website === "Website1") {
-        
-        
+      
+      
 //         url = `https://search.bilibili.com/all?keyword=${encodeURIComponent(this.searchQuery)}`;
 //         } else if (website === "Website2") {
 //           url = `https://ddys.art/?s=${encodeURIComponent(this.searchQuery)}&post_type=post`;
@@ -95,33 +151,4 @@ export default {
 // }
 
 
-  methods: {
-    performSearch() {
-      if (this.searchQuery === "") {
-        alert("请输入搜索内容");
-        return;
-      }
 
-      if (this.selectedWebsites.length === 0) {
-        alert("请选择要搜索的网站");
-        return;
-      }
-
-      this.selectedWebsites.forEach(website => {
-        let url = "";
-        if (website === "Website1") {
-          url = `https://www.bilibili.com/search?q=${encodeURIComponent(this.searchQuery)}`;
-        } else if (website === "Website2") {
-          url = `https://ddys.art/?s=${encodeURIComponent(this.searchQuery)}&post_type=post`;
-        }
-        // 在这里为其他网站添加相应的URL生成规则
-
-        if (url) {
-          window.open(url, "_blank");
-        }
-      });
-    }
-  }
-};
-</script>
-  

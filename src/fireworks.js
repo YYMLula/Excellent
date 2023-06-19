@@ -4,9 +4,15 @@ export function initFireworks() {
 "use strict";
 
 function updateCoords(e) {
-    pointerX = (e.clientX || e.touches[0].clientX) - canvasEl.getBoundingClientRect().left, pointerY = e.clientY || e.touches[
-        0].clientY - canvasEl.getBoundingClientRect().top
+    if (e.clientX && e.clientY) {
+        pointerX = e.clientX - canvasEl.getBoundingClientRect().left;
+        pointerY = e.clientY - canvasEl.getBoundingClientRect().top;
+    } else if (e.touches && e.touches[0]) {
+        pointerX = e.touches[0].clientX - canvasEl.getBoundingClientRect().left;
+        pointerY = e.touches[0].clientY - canvasEl.getBoundingClientRect().top;
+    }
 }
+
 
 function setParticuleDirection(e) {
     var t = anime.random(0, 360) * Math.PI / 180,
