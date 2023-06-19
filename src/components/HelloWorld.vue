@@ -11,7 +11,7 @@
 					<p><router-link to="/worlder" active-class="active" ><img src="../assets/img/1.png" alt="">主页</router-link></p>
 					<p><router-link to="/home" active-class="active" ><img src="../assets/img/2.png" alt="">导航</router-link></p>
 					<p><router-link to="/log" active-class="active" ><img src="../assets/img/3.png" alt="">登陆</router-link></p>
-					<p><router-link to="/time" active-class="active" ><img src="../assets/img/4.png" alt="">休息</router-link></p>
+					<p><router-link to="/time" active-class="active" ><img src="../assets/img/4.png" alt="">盲盒</router-link></p>
 					<p><router-link to="/sc" active-class="active" ><img src="../assets/img/4.png" alt="">搜索</router-link></p>
 					<!-- <p><router-link to="/domoone" active-class="active" ><img src="../assets/img/4.png" alt="">搜索</router-link></p> -->
 					

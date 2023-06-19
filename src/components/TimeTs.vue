@@ -39,8 +39,8 @@ export default {
     const showReminder = ref(false)
     const timeRemaining = ref(0)
 
-    const restTime = 1 * 60 * 1000 // 休息5分钟（毫秒）
-    const workTime = 1 * 60 * 1000 // 工作30分钟（毫秒）
+    const restTime = 5 * 60 * 1000 // 休息5分钟（毫秒）
+    const workTime = 30 * 60 * 1000 // 工作30分钟（毫秒）
 
     const startReminderInterval = () => {
       setTimeout(() => {

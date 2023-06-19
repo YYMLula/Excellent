@@ -18,3 +18,7 @@ Mock.mock('/register', 'get', {
     status: 200,
     message: '注册成功',
 })
+Mock.mock('/api/getRandomText', 'get', {
+    'randomText': '@cword(5, 10)',
+  })
+  
