@@ -19,10 +19,10 @@ Mock.mock('/register', 'get', {
     message: '注册成功',
 })
 Mock.mock('/api/getRandomText', 'get', {
-    'randomText': '@cword(5, 10)',
+    'randomText': '@cword(4, 6)',
   })
   Mock.mock('/api/getTodaysHoroscope', 'get', {
     'score|80-100': 1,
-    'description': '@sentence(10, 15)',
+    'description': '@cword(1, 2)',
   })
   
