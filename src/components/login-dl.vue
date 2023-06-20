@@ -75,6 +75,9 @@
 import {reactive,ref} from 'vue'
 import {userLoginIn, userRegist} from '../api';
 import{Lock,User} from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const preRef=ref('')
 const imgList=ref([require('@/assets/img/wuwu.jpg'),require('@/assets/img/waoku.jpg')])
 let flag=ref(true)
@@ -132,6 +135,7 @@ userLoginIn(loginForm).then(() => {
     ) {
         // 登录后续操作
         window.alert('登陆成功');
+        router.push('/ms')
     }
 });
 };
@@ -151,6 +155,7 @@ confirmPassword: [
 { min: 6, max: 12, message: '请再次输入密码', trigger: 'blur' },
 ],
 })
+
 </script>
 
 <style scoped>
