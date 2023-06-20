@@ -21,4 +21,8 @@ Mock.mock('/register', 'get', {
 Mock.mock('/api/getRandomText', 'get', {
     'randomText': '@cword(5, 10)',
   })
+  Mock.mock('/api/getTodaysHoroscope', 'get', {
+    'score|80-100': 1,
+    'description': '@sentence(10, 15)',
+  })
   

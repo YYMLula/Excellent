@@ -4,7 +4,7 @@
 			<div class="headin">
 				<div class="headl">
 					<!-- 这里写的是 最上面那条灰色的部分 向左浮动 -->
-					<img src="../assets/img/guanzhong.png" alt="" height="60px" style="margin-top: 5px;float: left;">Give points
+					<img src="../assets/img/龙猫.png" alt="" height="60px" style="margin-top: 5px;float: left;">Give points
 				</div>
 				<!-- <div class="inp"><button style="top: 0;width: 60px;background-color: white;color: blue;">百度</button><input style="position: absolute;height: 36px;left: 60px;width: 260px;opacity: 0.5;" type="text" name="" id=""><button style="right: 0;background-color: blue;color: rgb(255, 255, 255);width: 80px;">搜索</button></div> -->
 				<div class="headr">
