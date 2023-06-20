@@ -38,6 +38,11 @@ const routes = [
     component: () => import('../components/DaAnbook.vue')
   },
   {
+    path: '/:catchAll(.*)',
+    name: '404',
+    component: () => import('../views/E404E.vue')
+  },
+  {
     path: '/ms',
     name: 'ms',
     // route level code-splitting
