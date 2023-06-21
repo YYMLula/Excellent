@@ -19,7 +19,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../components/WorldEr.vue')
+    component: () => import('../components/WorldEr.vue'),
+    meta:{
+      title:"主页"
+    }
   },
   {
     path: '/log',
@@ -27,7 +30,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../components/login-dl.vue')
+    component: () => import('../components/login-dl.vue'),
+    meta:{
+      title:"登录"
+    }
   },
   {
     path: '/dbok',
@@ -35,12 +41,18 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../components/DaAnbook.vue')
+    component: () => import('../components/DaAnbook.vue'),
+    meta:{
+      title:"答案之书"
+    }
   },
   {
     path: '/:catchAll(.*)',
     name: '404',
-    component: () => import('../views/E404E.vue')
+    component: () => import('../views/E404E.vue'),
+    meta:{
+      title:"404"
+    }
   },
   {
     path: '/ms',
@@ -48,7 +60,11 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../components/MaHe.vue')
+    component: () => import('../components/MaHe.vue'),
+    meta:{
+      title:"盲盒"
+    }
+
   },
   {
     path: '/sc',
@@ -56,7 +72,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../components/SearchComponent.vue')
+    component: () => import('../components/SearchComponent.vue'),
+    meta:{
+      title:"搜索"
+    }
   },
  
   {
@@ -65,7 +84,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../components/HomeEo.vue')
+    component: () => import('../components/HomeEo.vue'),
+    meta:{
+      title:"导航"
+    }
   },
   {
     path: '/demoone',
@@ -81,5 +103,10 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach((to,from,next) => {
+  document.title = to.meta.title
+  next()
+})
+
 
 export default router
