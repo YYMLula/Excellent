@@ -6,12 +6,12 @@
 					<img src="../assets/img/龙猫.png" alt="" height="60px" style="margin-top: 5px;float: left;">Give points
 				</div>
 				<div class="headr">
-					<p><router-link to="/worlder" active-class="active" ><el-button  :icon="Search">主页</el-button></router-link></p>
-					<p><router-link to="/home" active-class="active" ><el-button  :icon="Search">导航</el-button></router-link></p>
-					<p><router-link to="/log" active-class="active" ><el-button  :icon="Search">登陆</el-button></router-link></p>
-					<p><router-link to="/ms" active-class="active" ><el-button  :icon="Search">盲盒</el-button></router-link></p>
-					<p><router-link to="/dbok" active-class="active" ><el-button  :icon="Search">答案之书</el-button></router-link></p>
-					<p><router-link to="/sc" active-class="active" ><el-button  :icon="Search">搜索</el-button></router-link></p>
+					<p><router-link to="/worlder" active-class="active" ><el-button type="primary" :icon="Search">主页</el-button></router-link></p>
+					<p><router-link to="/home" active-class="active" ><el-button type="primary" :icon="Search">导航</el-button></router-link></p>
+					<p><router-link to="/log" active-class="active" ><el-button type="primary" :icon="Search">登陆</el-button></router-link></p>
+					<p><router-link to="/ms" active-class="active" ><el-button type="primary" :icon="Search">盲盒</el-button></router-link></p>
+					<p><router-link to="/dbok" active-class="active" ><el-button type="primary" :icon="Search">答案之书</el-button></router-link></p>
+					<p><router-link to="/sc" active-class="active" ><el-button type="primary" :icon="Search">搜索</el-button></router-link></p>
 				</div>
 			</div>
 	</div>

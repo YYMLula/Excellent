@@ -8,17 +8,11 @@ const routes = [
   {
     path: '/helloworld',
     name: 'helloworld',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/HelloWorld.vue')
   },
   {
     path: '/worlder',
     name: 'worlder',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/WorldEr.vue'),
     meta:{
       title:"主页"
@@ -27,9 +21,6 @@ const routes = [
   {
     path: '/log',
     name: 'log',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/login-dl.vue'),
     meta:{
       title:"登录"
@@ -38,9 +29,6 @@ const routes = [
   {
     path: '/dbok',
     name: 'dbok',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/DaAnbook.vue'),
     meta:{
       title:"答案之书"
@@ -57,9 +45,6 @@ const routes = [
   {
     path: '/ms',
     name: 'ms',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/MaHe.vue'),
     meta:{
       title:"盲盒"
@@ -69,9 +54,6 @@ const routes = [
   {
     path: '/sc',
     name: 'sc',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/SearchComponent.vue'),
     meta:{
       title:"搜索"
@@ -81,9 +63,6 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/HomeEo.vue'),
     meta:{
       title:"导航"
@@ -92,9 +71,6 @@ const routes = [
   {
     path: '/demoone',
     name: 'demoone',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import('../components/DemoOne.vue')
   }
 ]
