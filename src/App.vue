@@ -1,26 +1,16 @@
 <template>
   <!-- 画布  去掉可全局，但部分按钮按不了pointer-events: none-->
      <canvas  @click="onClickBody" class="fireworks" width="667" style="top: 0px; left: 0px; pointer-events: none; position: absolute;" height="307" ></canvas>
-    <!-- <Loginone /> -->
-    <!-- <DemoOne  />  -->
-    <!-- <div>
-      <div v-if="showFirstPage">
-        <DemoOne />
-      </div>
-      <div v-else>
-        <HelloWorld />
-      </div>
-    </div> -->
+
     <TimeTs @click="onClickBody" />
     <div @click="onClickBody">
       <HelloWorld  />
     </div>
-    
-    <!-- <login-dl /> -->
+ 
 </template>
 
 <script>
-// {/* <script> */}
+
 import HelloWorld from './components/HelloWorld.vue'
 import TimeTs from './components/TimeTs.vue'
 import { initFireworks } from './fireworks.js';//导入烟花函数

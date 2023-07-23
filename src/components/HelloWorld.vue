@@ -20,6 +20,32 @@
 		
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      images: [
+        '../components/img/background1.jpg',
+        '../components/img/background2.jpg',
+        '../components/img/background3.jpg'
+      ],
+      currentIndex: 0,
+      intervalId: null
+    }
+  },
+  mounted() {
+    this.startSlider()
+  },
+  methods: {
+    startSlider() {
+      this.intervalId = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length
+      }, 5000)
+    }
+  }
+}
+</script>
+
 <style scoped>
 * {
 	margin: 0;
@@ -138,29 +164,3 @@ a {
 	opacity: 0;
 	}
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      images: [
-        '../components/img/background1.jpg',
-        '../components/img/background2.jpg',
-        '../components/img/background3.jpg'
-      ],
-      currentIndex: 0,
-      intervalId: null
-    }
-  },
-  mounted() {
-    this.startSlider()
-  },
-  methods: {
-    startSlider() {
-      this.intervalId = setInterval(() => {
-        this.currentIndex = (this.currentIndex + 1) % this.images.length
-      }, 5000)
-    }
-  }
-}
-</script>
